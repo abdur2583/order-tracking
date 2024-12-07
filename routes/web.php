@@ -48,8 +48,9 @@ Route::middleware('auth:sanctum')->group(function () {
 // Order Routes
 Route::middleware('auth:sanctum')->group(function () {
     Route::get('orders', [OrderController::class, 'index']);
-    Route::get('all-orders', [OrderController::class, 'adminIndex']);
+    Route::get('all-orders', [OrderController::class, 'orderWithShippingAddress']);
     Route::get('all-user-orders', [OrderController::class, 'userOrderIndex']);
+    //Route::get('all-user-orders-shipping-address', [OrderController::class, 'orderWithShippingAddress']);
     Route::post('create-orders', [OrderController::class, 'store']);
     Route::get('orders/{id}', [OrderController::class, 'show']);
     Route::post('update-orders/{id}', [OrderController::class, 'update']);

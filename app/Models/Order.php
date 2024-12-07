@@ -18,8 +18,10 @@ class Order extends Model
         'placed_at'
     ];
     public function user()
-{
-    return $this->belongsTo(User::class);
-}
-
+    {
+        return $this->belongsTo(User::class);
+    }
+ public function shippingAddress() { 
+    return $this->belongsTo(ShippingAddresse::class, 'shipping_address_id');
+        }
 }

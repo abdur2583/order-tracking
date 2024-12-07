@@ -28,6 +28,14 @@ class OrderController extends Controller
         }
     }
     //
+    function orderWithShippingAddress(){
+        try{
+            $orders = Order::with('shippingAddress') ->where('user_id', Auth::id()) ->get();
+            return response()->json(['status' => 'success', 'data' => $orders], 201);
+        }catch (\Exception $e) {
+            return response()->json(['status' => 'error', 'error' => $e->getMessage()], 500);
+        }
+    }
     public function userOrderIndex()  {
         try{
             $userType =  $userType = Auth()->user()->user_type;
