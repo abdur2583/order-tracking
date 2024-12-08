@@ -54,7 +54,7 @@ class NotificationController extends Controller
     
             return response()->json(['status' => 'success', 'message' =>'Notification created successfully ', 'data' =>$notification ], 201); 
         }catch(\Exception $e){
-                return response()->json(['status' => 'error', 'error' => 'Notification fail to create'.$e], 404); 
+                return response()->json(['status' => 'error', 'error' => 'Notification fail to create'.$e], 201); 
         }
         
     }
@@ -65,7 +65,7 @@ class NotificationController extends Controller
             $notification = Notification::where('user_id', Auth::id())->findOrFail($id);
             return response()->json(['status' => 'success', 'data' =>$notification ], 201); 
         }catch (\Exception $e){
-            return response()->json(['status' => 'error', 'message' => 'Notification create fail'.$e], 404); 
+            return response()->json(['status' => 'error', 'message' => 'Notification create fail'.$e], 201); 
         }
     }
 
@@ -83,7 +83,7 @@ class NotificationController extends Controller
 
             return response()->json(['status' => 'success', 'message' =>'Notification updated successfully ', 'data' =>$notification ], 201); 
         }catch (\Exception $e){
-            return response()->json(['status' => 'error', 'message' => 'Notification fail to update'.$e], 404); 
+            return response()->json(['status' => 'error', 'message' => 'Notification fail to update'.$e], 201); 
         }
     }
 
@@ -95,7 +95,7 @@ class NotificationController extends Controller
     
             return response()->json(['status' => 'success', 'message' =>'Notification deleted successfully ', 'data' =>$notification ], 201); 
         }catch(\Exception $e){
-            return response()->json(['status' => 'error', 'message' => 'Notification delete fail'.$e], 404); 
+            return response()->json(['status' => 'error', 'message' => 'Notification delete fail'.$e], 201); 
         }
     }
 
@@ -107,7 +107,7 @@ class NotificationController extends Controller
     
             return response()->json(['status' => 'success', 'message' =>'Notification marked successfully ', 'data' =>$notification ], 201);
         }catch(\Exception $e){
-            return response()->json(['status' => 'error', 'message' => 'Notification marked fail'.$e], 404); 
+            return response()->json(['status' => 'error', 'message' => 'Notification marked fail'.$e], 201); 
         }
     }
 }

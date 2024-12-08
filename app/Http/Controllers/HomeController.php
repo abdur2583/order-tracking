@@ -18,7 +18,7 @@ class HomeController extends Controller
                 return redirect('/');
             }
             else if($userType == 'admin'){
-                return redirect('/dashboard');
+                return redirect('/dashboard.all-orders');
             }else {
                 return redirect()->back();
             }

@@ -23,7 +23,7 @@ class ShippingAddresseController extends Controller
                 return response()->json(['status' => 'error',  'message' =>'Your are not allowed' ], 201); 
             }
         } catch (\Exception $e) {
-            return response()->json(['status' => 'error', 'error' => $e->getMessage()], 500);
+            return response()->json(['status' => 'error', 'error' => $e->getMessage()], 201);
         }
     }
     //
@@ -33,7 +33,7 @@ class ShippingAddresseController extends Controller
             $notification =  ShippingAddresse::where('user_id', Auth::id())->get();
             return response()->json(['status' => 'success',  'data' =>$notification ], 201); 
         }catch (\Exception $e) {
-            return response()->json(['status' => 'error', 'error' => $e->getMessage()], 500);
+            return response()->json(['status' => 'error', 'error' => $e->getMessage()], 201);
         }
     }
 
@@ -62,7 +62,7 @@ class ShippingAddresseController extends Controller
     
             return response()->json(['status' => 'success', 'message' => 'Shipping Address created successfully', 'data' => $ShippingAddress], 201);
         }catch(\Exception $e){
-            return response()->json(['error' => $e->getMessage()], 500);
+            return response()->json(['error' => $e->getMessage()], 201);
         }
 
         
@@ -93,7 +93,7 @@ class ShippingAddresseController extends Controller
             return response()->json(['status' => 'success', 'message' => 'Shipping Address updated successfully', 'data' => $ShippingAddress], 201);
 
         }catch(\Exception $e){
-            return response()->json(['error' => $e->getMessage()], 500);
+            return response()->json(['error' => $e->getMessage()], 201);
         }
         
     }
@@ -106,7 +106,7 @@ class ShippingAddresseController extends Controller
     
             return response()->json(['status' => 'success', 'message' => 'Shipping Address deleted successfully'], 201);
         }catch(\Exception $e){
-            return response()->json(['error' => $e->getMessage()], 500);
+            return response()->json(['error' => $e->getMessage()], 201);
         }
     }
 

@@ -49,13 +49,26 @@ Route::middleware('auth:sanctum')->group(function () {
 Route::middleware('auth:sanctum')->group(function () {
     Route::get('orders', [OrderController::class, 'index']);
     Route::get('all-orders', [OrderController::class, 'orderWithShippingAddress']);
+   
     Route::get('all-user-orders', [OrderController::class, 'userOrderIndex']);
     //Route::get('all-user-orders-shipping-address', [OrderController::class, 'orderWithShippingAddress']);
     Route::post('create-orders', [OrderController::class, 'store']);
     Route::get('orders/{id}', [OrderController::class, 'show']);
-    Route::post('update-orders/{id}', [OrderController::class, 'update']);
+    Route::post('update-orders/{id}', [OrderController::class, 'update'])->name('orders.update');
     Route::delete('orders/{id}', [OrderController::class, 'destroy']);
 });
+//Route::post('create-orderss', [OrderController::class, 'store']);
+//view routes
+Route::view("admin/dashboard","dashboard2");
+Route::view("create-order","orders.create")->name('create-order"');
+Route::view("update-order","orders.update");
+Route::get('dashboard/all-orders', [OrderController::class, 'orderWithShippingAddressToView'])->name('dashboard.all-orders');
+Route::get('/single-orders/{id}', [OrderController::class, 'showSingle'])->name('orders.show');
+Route::post('admin/create-orders', [OrderController::class, 'storeAdmin'])->name('orders.store');
+Route::get('/admins/orders/{id}', [OrderController::class, 'editOrder'])->name('orders.edit');
+Route::post('/admin/orders/{id}', [OrderController::class, 'adminUpdate'])->name('orders.update');
+Route::delete('/admin/orders/{id}', [OrderController::class, 'adminDestroy'])->name('orders.delete');
+
 
 // Notification Routes
 Route::middleware('auth:sanctum')->group(function () {
